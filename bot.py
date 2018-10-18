@@ -183,7 +183,7 @@ async def rps(ctx):
     elif 'Scissors' in message.content:
         await client.say("You chose scissors!")
     else:
-        await client.say("Um, did you do something wrong?")
+        await client.say("Umm, did you do something wrong?")
         
     rps1 = random.choice(["Rock","Paper","Scissors"])
     rpsdecision = await client.say(rps1)
