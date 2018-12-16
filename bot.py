@@ -187,6 +187,16 @@ async def help(ctx):
     embed.add_field(name="!!diary", value="Do !!diary and see other people's diaries!")
     help1 = await client.say(embed=embed)
     await client.say("Type help1/help2 to see the pages.")
+    
+        def check(m):
+        return 'help2'
+    
+    message = await client.wait_for_message()
+    if 'help2' in message.content:
+        await client.say(help2)
+    else:
+        await client.say("Umm, did you do something wrong?") 
+    
     embed2 = discord.Embed(title="Second page!")
     embed.add_field(name="!!game", value="Do !!game and the bot guesses your favourite game")
     embed.add_field(name="!!moti", value="Do !!diary and see a motivational message!")
@@ -200,18 +210,7 @@ async def help(ctx):
     embed.add_field(name="!!future", value="Do !!future and see your possible future!")
     embed.add_field(name="!!number", value="Do !!number and see your lucky number!")
     embed.add_field(name="!!badnumber", value="Do !!badnumber and see your unlucky number!")
-    help2 = await client.say(embed2=embed2)
-    
-    def check(m):
-        return 'help2','help1'
-    
-    message = await client.wait_for_message()
-    if 'help2' in message.content:
-        await client.say(help2)
-    elif 'help1' in message.content:
-        await client.say(help1)
-    else:
-        await client.say("Umm, did you do something wrong?") 
+    help2 = await client.say(embed2=embed2) 
         
 @client.command(pass_context=True)
 async def edit(ctx):
