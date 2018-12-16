@@ -84,7 +84,7 @@ async def mute(ctx, member: discord.Member):
         embed=discord.Embed(title="Permission Denied.", description="You don't have permission to use this command.", color=0xff00f6)
         await client.say(embed=embed)
     
-    @client.command(pass_context=True)
+@client.command(pass_context=True)
 async def help(ctx):
     """List of all the commands!"""
 
