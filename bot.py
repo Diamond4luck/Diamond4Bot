@@ -203,13 +203,11 @@ async def help(ctx):
     help2 = await client.say(embed=embed) 
     
     def check(m):
-        return 'help2','help1'
+        return 'help2'
     
     message = await client.wait_for_message()
     if 'help2' in message.content:
         await client.say(help2)
-    elif 'help1' in message.content:
-        await client.say(help1)
     else:
         await client.say("Umm, did you do something wrong?") 
  
