@@ -95,7 +95,7 @@ async def help(ctx):
     for i in client.commands():
         embed.add_field(name=i.name, value=i.help)
        
-   await client.say(embed=embed)
+        await client.say(embed=embed)
     
 @client.command(pass_context=True)
 async def casino(ctx):
