@@ -85,19 +85,6 @@ async def mute(ctx, member: discord.Member):
         await client.say(embed=embed)
     
 @client.command(pass_context=True)
-async def help(ctx):
-    """List of all the commands!"""
-
-    embed = discord.Embed(title="Diamond4Bot", description="A fun bot made by Diamond4luck#4795.")
-    embed.add_field(name="Help Page", value="Click the number reactions below to look at different types of commands!")
-    embed.add_field(name="Bot Related Commands", value="Mess around with the bot.")
-    
-    for i in client.commands():
-        embed.add_field(name=i.name, value=i.help)
-       
-        await client.say(embed=embed)
-    
-@client.command(pass_context=True)
 async def casino(ctx):
     casinostart = await client.say("Bigger or smaller than 50? Say it!")
 
@@ -184,6 +171,47 @@ async def rps(ctx):
         elif 'Scissors' in message.content:
             await client.say("Scissors versus Scissors, it's a **tie!**")
 
+@client.command(pass_context=True)
+async def help(ctx):
+    embed = discord.Embed(title="Everything you need here!")
+    embed.add_field(name="!!power", value="Do !!power to see what hidden powers you have!")
+    embed.add_field(name="!!logs", value="Do !!logs to see what recent changes I did to the bot!")
+    embed.add_field(name="!!help", value="Do !!help to get help about the bot!")
+    embed.add_field(name="!!casino", value="Do !!casino and see if you can win or not!")
+    embed.add_field(name="!!rps", value="Do !!rps and play Rock, Paper, Scissors! with the bot itself!")
+    embed.add_field(name="!!yon", value="Do !!yon and see if you want what the bot says!")
+    embed.add_field(name="!!yon add", value="Do !!yon add and add your own lines of  Yes or No!")
+    embed.add_field(name="!!wyr", value="Do !!wyr and play Would you Rather with the bot!")
+    embed.add_field(name="!!wyr add", value="Do !!wyr add and add your own lines of Would You Rather!")
+    embed.add_field(name="!!kill", value="Do !!kill and see how you kill someone!")
+    embed.add_field(name="!!diary", value="Do !!diary and see other people's diaries!")
+    help1 = await client.say(embed=embed)
+    embed2 = discord.Embed(title="Second page!")
+    embed.add_field(name="!!game", value="Do !!game and the bot guesses your favourite game")
+    embed.add_field(name="!!moti", value="Do !!diary and see a motivational message!")
+    embed.add_field(name="!!love", value="Do !!love and see who loves who for how long!")
+    embed.add_field(name="!!reco", value="Do !!reco and see what the bot recommends a command for you!")
+    embed.add_field(name="!!ping", value="Do !!diary to ping the bot!")
+    embed.add_field(name="!!flip", value="Do !!flip and the bot flips a coin for you!")
+    embed.add_field(name="!!amIgay", value="Do !!amIgay and the bot guesses if you are gay or not.")
+    embed.add_field(name="!!howIkms", value="Do !!howIkms and see how would you kill yourself! (joke)")
+    embed.add_field(name="!!chance", value="Do !!chance and see if you're lucky or not! (similar to 8ball)")
+    embed.add_field(name="!!future", value="Do !!future and see your possible future!")
+    embed.add_field(name="!!number", value="Do !!number and see your lucky number!")
+    embed.add_field(name="!!badnumber", value="Do !!badnumber and see your unlucky number!")
+    help2 = await client.say(embed2=embed2)
+    
+    def check(m):
+        return 'help2','help1'
+    
+    message = await client.wait_for_message()
+    if 'help2' in message.content:
+        await client.say(help2)
+    elif 'help1' in message.content:
+        await client.say(help1)
+    else:
+        await client.say("Umm, did you do something wrong?")
+    
 @client.command(pass_context=True)
 async def edit(ctx):
     edit = await client.say("Edit.")
