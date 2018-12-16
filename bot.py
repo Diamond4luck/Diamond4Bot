@@ -200,10 +200,10 @@ async def help(ctx):
     embed.add_field(name="!!future", value="Do !!future and see your possible future!")
     embed.add_field(name="!!number", value="Do !!number and see your lucky number!")
     embed.add_field(name="!!badnumber", value="Do !!badnumber and see your unlucky number!")
-    help2 = await client.say(embed2=embed2) 
+    help2 = await client.say(embed=embed) 
     
     def check(m):
-        return m.author == user and m.content.capitalize() in ["help2", "help1"]
+        return 'help2','help1'
     
     message = await client.wait_for_message()
     if 'help2' in message.content:
