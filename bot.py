@@ -200,6 +200,7 @@ async def help(ctx):
     embed.add_field(name="!!number", value="Do !!number and see your lucky number!")
     embed.add_field(name="!!badnumber", value="Do !!badnumber and see your unlucky number!")
     help2 = await client.say(embed2=embed2)
+    await client.say("Type help1/help2 to see the pages.")
     
     def check(m):
         return 'help2','help1'
@@ -211,7 +212,15 @@ async def help(ctx):
         await client.say(help1)
     else:
         await client.say("Umm, did you do something wrong?")
+
+@client.command(pass_context=True)
+async def embeds(ctx):
+    embedz = discord.Embed(title="Hello")
+    embed1 = await client.say(embed=embed)
+    await client.say(embed1)
     
+    
+        
 @client.command(pass_context=True)
 async def edit(ctx):
     edit = await client.say("Edit.")
