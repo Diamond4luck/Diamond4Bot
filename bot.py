@@ -200,7 +200,7 @@ async def help(ctx):
     embed.add_field(name="!!future", value="Do !!future and see your possible future!")
     embed.add_field(name="!!number", value="Do !!number and see your lucky number!")
     embed.add_field(name="!!badnumber", value="Do !!badnumber and see your unlucky number!")
-    help2 = await client.say(embed=embed) 
+    help2 = await client.say(embed2=embed2) 
     
     def check(m):
         return 'help2'
@@ -209,8 +209,8 @@ async def help(ctx):
     if 'help2' in message.content:
         await client.say(help2)
     else:
-        await client.say("Umm, did you do something wrong?") 
-
+        await client.say("Umm, did you do something wrong?")
+        
 @client.command(pass_context=True)
 async def edit(ctx):
     edit = await client.say("Edit.")
