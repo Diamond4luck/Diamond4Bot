@@ -84,9 +84,18 @@ async def mute(ctx, member: discord.Member):
         embed=discord.Embed(title="Permission Denied.", description="You don't have permission to use this command.", color=0xff00f6)
         await client.say(embed=embed)
     
-@client.command(pass_context=True)
+    @client.command(pass_context=True)
 async def help(ctx):
-    await client.say("The help command is still on rework. Gonna fix this command...")
+    """List of all the commands!"""
+
+    embed = discord.Embed(title="Diamond4Bot", description="A fun bot made by Diamond4luck#4795.")
+    embed.add_field(name="Help Page", value="Click the number reactions below to look at different types of commands!")
+    embed.add_field(name="Bot Related Commands", value="Mess around with the bot.")
+    
+    for i in client.commands():
+        embed.add_field(name=i.name, value=i.help)
+       
+   await client.say(embed=embed)
     
 @client.command(pass_context=True)
 async def casino(ctx):
