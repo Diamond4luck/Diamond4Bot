@@ -173,7 +173,7 @@ async def rps(ctx):
 
 @client.command(pass_context=True)
 async def help(ctx):
-    aembed = discord.Embed(title="Everything you need here!")
+    embed = discord.Embed(title="Everything you need here!")
     embed.add_field(name="!!power", value="Do !!power to see what hidden powers you have!")
     embed.add_field(name="!!logs", value="Do !!logs to see what recent changes I did to the bot!")
     embed.add_field(name="!!help", value="Do !!help to get help about the bot!")
