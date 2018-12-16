@@ -210,20 +210,6 @@ async def help(ctx):
         await client.say(help2)
     else:
         await client.say("Umm, did you do something wrong?") 
- 
-async def yon(ctx, user=None):
-    if not user:
-        user = ctx.author
-
-    def check(m):
-        return m.author == user and m.content.capitalize() in ["Yes", "No"]
-
-    try:
-        check_ = (await ctx.bot.wait_for('message', check=check, timeout=30)).content.capitalize()
-        return check_
-    except asyncio.TimeoutError:
-        pass
-
 
 @client.command(pass_context=True)
 async def edit(ctx):
