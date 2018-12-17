@@ -204,44 +204,19 @@ async def help(ctx):
     helpembed2.add_field(name="!!number", value="Do !!number and see your lucky number!", inline=False)
     helpembed2.add_field(name="!!badnumber", value="Do !!badnumber and see your unlucky number!", inline=False)
     helpembed2.set_footer(text="Page 2 of 2")
+    #inline is where it doesn't set the first letter in the first word captialised (I think)
     
     def check(m):
-        return m.author == ctx.message.author and m.content == 'help2'
+        return m.author == ctx.message.author and m.content == 'help2' #from the author who typed the command and detects the next message if there is help2
     
     
     try:
-        msg = (await client.wait_for_message(check=check, timeout=120)).content
+        msg = (await client.wait_for_message(check=check, timeout=120)).content #waits for u to type something.
     except asyncio.TimeoutError:
         return await client.delete_message(help1)
 
-    if msg == 'help2':
-        await client.edit_message(help1, embed=helpembed2)
-
-        
-@client.command(pass_context=True)
-async def helptes(ctx):
-    embed = discord.Embed(title="Everything you need here!")
-    embed.add_field(name="!!power", value="Do !!power to see what hidden powers you have!")     
-    help1 = await client.say(embed=embed)
-    await client.say("Type help2 to see the pages.")   
-    helpembed2 = discord.Embed(title="Second page!")
-    embed.add_field(name="!!game", value="Do !!game and the bot guesses your favourite game")  
-    helpembed3 = await client.say(embed=embed) 
-    
-    def check(m):
-        return 'help2'
-    
-    message = await client.wait_for_message()
-    if 'help2' in message.content:
-        await client.send_message(message.channel, embed=helpembed3)
-
-        
-        
-        
-        
-        
-        
-        
+    if msg == 'help2': #if the message is help2 (by you)
+        await client.edit_message(help1, embed=helpembed2)      #edits the message of the first embed 
         
 @client.command(pass_context=True)
 async def edit(ctx):
