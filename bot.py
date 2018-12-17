@@ -213,7 +213,7 @@ async def help(ctx):
 
         
 @client.command(pass_context=True)
-async def help(ctx):
+async def helptest(ctx):
     embed = discord.Embed(title="Everything you need here!")
     embed.add_field(name="!!power", value="Do !!power to see what hidden powers you have!")     
     help1 = await client.say(embed=embed)
