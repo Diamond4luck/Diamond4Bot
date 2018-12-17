@@ -185,29 +185,37 @@ async def help(ctx):
     embed.add_field(name="!!wyr add", value="Do !!wyr add and add your own lines of Would You Rather!")
     embed.add_field(name="!!kill", value="Do !!kill and see how you kill someone!")
     embed.add_field(name="!!diary", value="Do !!diary and see other people's diaries!")
+    embed.set_footer(text="Page 1 of 2")
+
     help1 = await client.say(embed=embed)
-    await client.say("Type help2 to see the pages.")   
+    await client.say("Type help2 to see the pages.")
+
     helpembed2 = discord.Embed(title="Second page!")
-    embed.add_field(name="!!game", value="Do !!game and the bot guesses your favourite game")
-    embed.add_field(name="!!moti", value="Do !!diary and see a motivational message!")
-    embed.add_field(name="!!love", value="Do !!love and see who loves who for how long!")
-    embed.add_field(name="!!reco", value="Do !!reco and see what the bot recommends a command for you!")
-    embed.add_field(name="!!ping", value="Do !!diary to ping the bot!")
-    embed.add_field(name="!!flip", value="Do !!flip and the bot flips a coin for you!")
-    embed.add_field(name="!!amIgay", value="Do !!amIgay and the bot guesses if you are gay or not.")
-    embed.add_field(name="!!howIkms", value="Do !!howIkms and see how would you kill yourself! (joke)")
-    embed.add_field(name="!!chance", value="Do !!chance and see if you're lucky or not! (similar to 8ball)")
-    embed.add_field(name="!!future", value="Do !!future and see your possible future!")
-    embed.add_field(name="!!number", value="Do !!number and see your lucky number!")
-    embed.add_field(name="!!badnumber", value="Do !!badnumber and see your unlucky number!")
-    embed.to_dict()
+    helpembed2.add_field(name="!!game", value="Do !!game and the bot guesses your favourite game", inline=False)
+    helpembed2.add_field(name="!!moti", value="Do !!diary and see a motivational message!", inline=False)
+    helpembed2.add_field(name="!!love", value="Do !!love and see who loves who for how long!", inline=False)
+    helpembed2.add_field(name="!!reco", value="Do !!reco and see what the bot recommends a command for you!", inline=False)
+    helpembed2.add_field(name="!!ping", value="Do !!diary to ping the bot!", inline=False)
+    helpembed2.add_field(name="!!flip", value="Do !!flip and the bot flips a coin for you!", inline=False)
+    helpembed2.add_field(name="!!amIgay", value="Do !!amIgay and the bot guesses if you are gay or not.", inline=False)
+    helpembed2.add_field(name="!!howIkms", value="Do !!howIkms and see how would you kill yourself! (joke)", inline=False)
+    helpembed2.add_field(name="!!chance", value="Do !!chance and see if you're lucky or not! (similar to 8ball)", inline=False)
+    helpembed2.add_field(name="!!future", value="Do !!future and see your possible future!", inline=False)
+    helpembed2.add_field(name="!!number", value="Do !!number and see your lucky number!", inline=False)
+    helpembed2.add_field(name="!!badnumber", value="Do !!badnumber and see your unlucky number!", inline=False)
+    helpembed2.set_footer(name="Page 2 of 2")
     
     def check(m):
-        return 'help2'
+        return m.author == ctx.message.author and m.content == 'help2'
     
-    message = await client.wait_for_message()
-    if 'help2' in message.content:
-        await client.send_message(message.channel, embed=helpembed)
+    
+    try:
+        msg = (await client.wait_for_message(check=check, timeout=120)).content
+    except asyncio.TimeoutError:
+        return await client.delete_message(help1)
+
+    if msg == 'help2':
+        await client.edit_message(help1, embed=helpembed2)
 
         
 @client.command(pass_context=True)
