@@ -207,7 +207,7 @@ async def help(ctx):
     
     message = await client.wait_for_message()
     if 'help2' in message.content:
-        await client.send_message(message.channel, embed=helpembed3)
+        await client.send_message(message.channel, embed=helpembed)
 
         
 @client.command(pass_context=True)
