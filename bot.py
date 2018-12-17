@@ -200,7 +200,7 @@ async def help(ctx):
     embed.add_field(name="!!future", value="Do !!future and see your possible future!")
     embed.add_field(name="!!number", value="Do !!number and see your lucky number!")
     embed.add_field(name="!!badnumber", value="Do !!badnumber and see your unlucky number!")
-    helpembed3 = await client.say(embed=embed)
+    embed.to_dict()
     
     def check(m):
         return 'help2'
@@ -215,19 +215,18 @@ async def helptest(ctx):
     embed = discord.Embed(title="Everything you need here!")
     embed.add_field(name="!!power", value="Do !!power to see what hidden powers you have!")     
     help1 = await client.say(embed=embed)
-    await client.say("Type help1/help2 to see the pages.")   
-    embed2 = discord.Embed(title="Second page!")
+    await client.say("Type help2 to see the pages.")   
+    helpembed2 = discord.Embed(title="Second page!")
     embed.add_field(name="!!game", value="Do !!game and the bot guesses your favourite game")  
-    help2 = await client.say(embed=embed) 
+    helpembed3 = await client.say(embed=embed) 
     
     def check(m):
         return 'help2'
     
     message = await client.wait_for_message()
     if 'help2' in message.content:
-        await client.say(help2)
-    else:
-        await client.say("Umm, did you do something wrong?")
+        await client.send_message(message.channel, embed=helpembed3)
+
         
         
         
