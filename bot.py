@@ -173,7 +173,7 @@ async def rps(ctx):
 
 @client.command(pass_context=True)
 async def help(ctx):
-    embed = discord.Embed(title="Everything you need here!")
+    helpembed = discord.Embed(title="Everything you need here!")
     embed.add_field(name="!!power", value="Do !!power to see what hidden powers you have!")
     embed.add_field(name="!!logs", value="Do !!logs to see what recent changes I did to the bot!")
     embed.add_field(name="!!help", value="Do !!help to get help about the bot!")
@@ -185,9 +185,9 @@ async def help(ctx):
     embed.add_field(name="!!wyr add", value="Do !!wyr add and add your own lines of Would You Rather!")
     embed.add_field(name="!!kill", value="Do !!kill and see how you kill someone!")
     embed.add_field(name="!!diary", value="Do !!diary and see other people's diaries!")
-    help1 = await client.say(embed=embed)
+    help1 = await client.say(embed=helpembed)
     await client.say("Type help2 to see the pages.")   
-    embed2 = discord.Embed(title="Second page!")
+    helpembed2 = discord.Embed(title="Second page!")
     embed.add_field(name="!!game", value="Do !!game and the bot guesses your favourite game")
     embed.add_field(name="!!moti", value="Do !!diary and see a motivational message!")
     embed.add_field(name="!!love", value="Do !!love and see who loves who for how long!")
@@ -200,14 +200,13 @@ async def help(ctx):
     embed.add_field(name="!!future", value="Do !!future and see your possible future!")
     embed.add_field(name="!!number", value="Do !!number and see your lucky number!")
     embed.add_field(name="!!badnumber", value="Do !!badnumber and see your unlucky number!")
-    help2 = await client.say(embed=embed) 
     
     def check(m):
         return 'help2'
     
     message = await client.wait_for_message()
     if 'help2' in message.content:
-        await client.send_message(message.channel, embed=help2)
+        await client.send_message(message.channel, embed=embed2)
 
         
 @client.command(pass_context=True)
