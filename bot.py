@@ -293,7 +293,7 @@ async def waud(ctx):
     
 @client.command(pass_context=True)
 async def ping(ctx):
-    await client.say("Pong!")
+    await client.say("Pong!!")
 
 @client.command(pass_context=True)
 async def flip(ctx):
