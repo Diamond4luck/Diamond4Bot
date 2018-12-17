@@ -203,7 +203,7 @@ async def help(ctx):
     helpembed2.add_field(name="!!future", value="Do !!future and see your possible future!", inline=False)
     helpembed2.add_field(name="!!number", value="Do !!number and see your lucky number!", inline=False)
     helpembed2.add_field(name="!!badnumber", value="Do !!badnumber and see your unlucky number!", inline=False)
-    helpembed2.set_footer(name="Page 2 of 2")
+    helpembed2.set_footer(text="Page 2 of 2")
     
     def check(m):
         return m.author == ctx.message.author and m.content == 'help2'
