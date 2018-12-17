@@ -40,11 +40,6 @@ async def cooldown(ctx):
     cooldown = await client.say("Ok. See if this has cooldown now.")
 
 @client.command(pass_context=True)
-async def pm(ctx):
-    pm = await client.start_private_message(ctx.message.author)
-    await client.send_message(pm, "o.o hello there.")
-
-@client.command(pass_context=True)
 async def logs(ctx):
     embed = discord.Embed(title="All the changelogs here!", color=0xE90FF)
     embed.add_field(name="New Command!", value="Do !!rps and play Rock Paper Scissors with the bot! Added in 17/9/2018.")
@@ -58,31 +53,7 @@ async def logs(ctx):
     embed.add_field(name="New Command!", value="Do !!waud to see what other memebrs are doing. Added in 26/2/2018.")
     embed.add_field(name="Minor Update!", value="Every embed should have colours now! Updated in 13/1/2018.")
     embed.add_field(name="Updated Command!", value="Updated the !!help command. This time, it's an embed! Updated in 13/1/2018.")
-    await client.say(embed=embed)
-    
-@client.command(pass_context=True)
-async def reac(ctx):
-        embed = discord.Embed(title="Going to be edited.", description="Thumbs up to update.")
-        msgtest = await client.say(embed=embed)
-        res = await client.wait_for_reaction(['👍', '👎'], message=msgtest)
-        embed2 = discord.Embed(title="Embed1", description ="embed2")
-        await client.edit_message(msgtest, embed=embed2)
-        
-@client.command(pass_context=True)
-async def cd(ctx):
-    await asyncio.sleep(10)
-    await client.say("Wait for 10 seconds.")
-                    
-@client.command(pass_context = True)
-async def mute(ctx, member: discord.Member):
-     if ctx.message.author.server_permissions.administrator or ctx.message.author.id == '194151340090327041':
-        role = discord.utils.get(member.server.roles, name='Muted')
-        await client.add_roles(member, role)
-        embed=discord.Embed(title="User Muted!", description="**{0}** was muted by **{1}**!".format(member, ctx.message.author), color=0xff00f6)
-        await client.say(embed=embed)
-     else:
-        embed=discord.Embed(title="Permission Denied.", description="You don't have permission to use this command.", color=0xff00f6)
-        await client.say(embed=embed)
+    await client.say(embed=embed)   
     
 @client.command(pass_context=True)
 async def casino(ctx):
@@ -217,14 +188,7 @@ async def help(ctx):
 
     if msg == 'help2': #if the message is help2 (by you)
         await client.edit_message(help1, embed=helpembed2)      #edits the message of the first embed 
-        
-@client.command(pass_context=True)
-async def edit(ctx):
-    edit = await client.say("Edit.")
-    await client.add_reaction(edit,'2\u20e3')
-    edit2 = await client.wait_for_reaction(['3\u20e3'], message=edit)
-    await client.edit_message(edit, "Edited!")
-    
+           
 @client.group(pass_context=True, invoke_without_command=True)
 async def yon(ctx):
     yesornolist = open('yesorno.txt').read().splitlines()
@@ -280,12 +244,6 @@ async def diary(ctx):
     embed.add_field(name="Written in",value="{}/{}/2018.".format(Day, Month))
     embed.set_image(url="https://cdn.discordapp.com/attachments/347731992227610625/480550401968701440/diary.jpg")
     await client.say(embed=embed)
-    
-    
-@client.command(pass_context=True)
-async def kick(ctx, user: discord.Member):
-    await client.say("Here's the boot. :boot: Bye bye, {}!".format(user.name))
-    await client.kick(user)
 
 @client.command(pass_context=True)
 @commands.cooldown(1, 5, commands.BucketType.user)
@@ -295,60 +253,7 @@ async def game(ctx):
     if ctx.message.author.id == "206027308149112832":
         await client.say("<@!206027308149112832> you like to play Clash Royale!")
     else:
-        await client.say('%s you like to play %s' % (ctx.message.author.mention, games))
-
-@client.command(pass_context=True)
-async def test(ctx):
-    await client.say('hi')
-    greet = await client.wait_for_message(content='hi')
-    await client.say('oo someone replied')
-    greet2 = await client.wait_for_message(content='kill')
-    await client.say('oi wanna fight')
-    greet3 = await client.wait_for_message(content='ok m8 lets go')
-    await client.say('ok lets dance u fat boi')
-    await client.say('what are u gonna start off with')
- 
-    def fight(msg):
-        return msg.content.startswith('Punch') or msg.content.startswith('Kick')
-        
-    message = await client.wait_for_message(check=fight)
-    await client.say("your text here")
-    
-@client.command(pass_context = True)
-async def listban(ctx):
-    '''Gets A List Of Users Who Are No Longer With us'''
-    x = await client.get_bans(ctx.message.server)
-    x = '\n'.join([y.name for y in x])
-    embed = discord.Embed(title = "List of The Banned Idiots", description = x, color = 0xFFFFF)
-    return await client.say(embed = embed) 
-
-@client.command(pass_context=True, aliases=['remove', 'delete'])
-async def purge(ctx, number):
-    """Bulk-deletes messages from the channel."""
-    try:
-        if ctx.message.author.server_permissions.administrator:
-            mgs = []  # Empty list to put all the messages in the log
-            # Converting the amount of messages to delete to an integer
-            number = int(number)
-            async for x in client.logs_from(ctx.message.channel, limit=number):
-                mgs.append(x)
-            await client.delete_messages(mgs)
-            print("Purged {} messages.".format(number))
-            logger.info("Purged {} messages.".format(number))
-        else:
-            await client.say(config.err_mesg_permission)
-    except:
-        await client.say(config.err_mesg)
-        
-@client.command(pass_context=True)
-async def roles(context):
-    """Lists the current roles on the server."""
-
-    roles = context.message.server.roles
-    result = "**The roles on this server are: **"
-    for role in roles:
-        result += role.name + ", "
-    await client.say(result)
+        await client.say('%s you like to play %s' % (ctx.message.author.mention, games)
 
 @client.command(pass_context=True)                    
 async def moti(ctx):
@@ -377,12 +282,6 @@ async def reco(ctx):
     embed = discord.Embed(title='I recommend you to try out this command...', description = '**{}**'.format(recommended2))
     embed.set_image(url="https://cdn.discordapp.com/attachments/385419071727992834/462927747149463573/download.jpg")
     await client.say(embed=embed)                       
-
-@client.command(pass_context=True)
-async def embed(ctx):
-    embed = discord.Embed(title='EMBED PLZ WORK', description='PLEASE MAKE THIS WORK')
-    embed.set_image(url="https://cdn.discordapp.com/attachments/385419071727992834/393317821381345280/Wrong.png")
-    await client.say(embed=embed)
 
 @client.command(pass_context=True)
 async def waud(ctx):
@@ -452,7 +351,56 @@ async def badnumber(ctx):
     badnumber = random.randint(0,100)
     await client.say('Your unlucky number for today is ``{0}``! Try not to use this number or you will face the consequences...'.format(badnumber))
     
-    
+#these here are test commands/references
+                         
+@client.command(pass_context=True) #embed
+async def embed(ctx):
+    embed = discord.Embed(title='EMBED PLZ WORK', description='PLEASE MAKE THIS WORK')
+    embed.set_image(url="https://cdn.discordapp.com/attachments/385419071727992834/393317821381345280/Wrong.png")
+    await client.say(embed=embed)                         
+
+@client.command(pass_context=True) #bot responding to your actions
+async def test(ctx):
+    await client.say('hi')
+    greet = await client.wait_for_message(content='hi')
+    await client.say('oo someone replied')
+    greet2 = await client.wait_for_message(content='kill')
+    await client.say('oi wanna fight')
+    greet3 = await client.wait_for_message(content='ok m8 lets go')
+    await client.say('ok lets dance u fat boi')
+    await client.say('what are u gonna start off with')
+ 
+    def fight(msg):
+        return msg.content.startswith('Punch') or msg.content.startswith('Kick')
+        
+    message = await client.wait_for_message(check=fight)
+    await client.say("your text here")                         
+                         
+@client.command(pass_context=True) #bot talking to u in DM
+async def pm(ctx):
+    pm = await client.start_private_message(ctx.message.author)
+    await client.send_message(pm, "o.o hello there.")
+                         
+@client.command(pass_context=True) #cooldown
+async def cd(ctx):
+    await asyncio.sleep(10)
+    await client.say("Wait for 10 seconds.")
+                         
+@client.command(pass_context=True) #emoji react
+async def reac(ctx):
+        embed = discord.Embed(title="Going to be edited.", description="Thumbs up to update.")
+        msgtest = await client.say(embed=embed)
+        res = await client.wait_for_reaction(['👍', '👎'], message=msgtest)
+        embed2 = discord.Embed(title="Embed1", description ="embed2")
+        await client.edit_message(msgtest, embed=embed2)
+                         
+@client.command(pass_context=True) #editing message
+async def edit(ctx):
+    edit = await client.say("Edit.")
+    await client.add_reaction(edit,'2\u20e3')
+    edit2 = await client.wait_for_reaction(['3\u20e3'], message=edit)
+    await client.edit_message(edit, "Edited!")                         
+                  
 client.run(str(os.environ.get('BOT_TOKEN')))
 
 
