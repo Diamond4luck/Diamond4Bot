@@ -186,7 +186,7 @@ async def help(ctx):
     embed.add_field(name="!!kill", value="Do !!kill and see how you kill someone!")
     embed.add_field(name="!!diary", value="Do !!diary and see other people's diaries!")
     help1 = await client.say(embed=embed)
-    await client.say("Type help1/help2 to see the pages.")   
+    await client.say("Type help2 to see the pages.")   
     embed2 = discord.Embed(title="Second page!")
     embed.add_field(name="!!game", value="Do !!game and the bot guesses your favourite game")
     embed.add_field(name="!!moti", value="Do !!diary and see a motivational message!")
@@ -207,9 +207,36 @@ async def help(ctx):
     
     message = await client.wait_for_message()
     if 'help2' in message.content:
+        await client.send_message(embed=help2)
+    else:
+        await client.say("Umm, did you do something wrong?")
+
+        
+@client.command(pass_context=True)
+async def help(ctx):
+    embed = discord.Embed(title="Everything you need here!")
+    embed.add_field(name="!!power", value="Do !!power to see what hidden powers you have!")     
+    help1 = await client.say(embed=embed)
+    await client.say("Type help1/help2 to see the pages.")   
+    embed2 = discord.Embed(title="Second page!")
+    embed.add_field(name="!!game", value="Do !!game and the bot guesses your favourite game")  
+    help2 = await client.say(embed=embed) 
+    
+    def check(m):
+        return 'help2'
+    
+    message = await client.wait_for_message()
+    if 'help2' in message.content:
         await client.say(help2)
     else:
         await client.say("Umm, did you do something wrong?")
+        
+        
+        
+        
+        
+        
+        
         
 @client.command(pass_context=True)
 async def edit(ctx):
