@@ -200,13 +200,14 @@ async def help(ctx):
     embed.add_field(name="!!future", value="Do !!future and see your possible future!")
     embed.add_field(name="!!number", value="Do !!number and see your lucky number!")
     embed.add_field(name="!!badnumber", value="Do !!badnumber and see your unlucky number!")
+    helpembed3 = await client.say(embed=helpembed2)
     
     def check(m):
         return 'help2'
     
     message = await client.wait_for_message()
     if 'help2' in message.content:
-        await client.send_message(message.channel, embed=helpembed2)
+        await client.send_message(message.channel, embed=helpembed3)
 
         
 @client.command(pass_context=True)
