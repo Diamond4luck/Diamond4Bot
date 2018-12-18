@@ -365,7 +365,7 @@ async def pm(ctx):
     
 @client.command(pass_context=True)
 async def poke(ctx, member: discord.Member,string):
-    await client.send_message(member, %s % (string))
+    await client.send_message("%s" % (member, string))
                          
 @client.command(pass_context=True) #cooldown
 async def cd(ctx):
