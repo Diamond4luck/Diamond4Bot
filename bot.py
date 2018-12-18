@@ -362,6 +362,10 @@ async def test(ctx):
 async def pm(ctx):
     pm = await client.start_private_message(ctx.message.author)
     await client.send_message(pm, "o.o hello there.")
+    
+@client.command(pass_context=True)
+async def poke(ctx, member: discord.Member):
+    await client.send_message(member, 'boop')
                          
 @client.command(pass_context=True) #cooldown
 async def cd(ctx):
