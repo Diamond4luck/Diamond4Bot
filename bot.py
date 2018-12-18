@@ -254,15 +254,6 @@ async def game(ctx):
         await client.say("<@!206027308149112832> you like to play Clash Royale!")
     else:
         await client.say('%s you like to play %s' % (ctx.message.author.mention, games)
-
-@client.command(pass_context=True) 
-@commands.cooldown(1, 5, commands.BucketType.user)                         
-async def moti(ctx):
-    motivation = open('moti2.txt', encoding = "UTF-8").read().splitlines()
-    motivation2 = random.choice(motivation)
-    embed = discord.Embed(title='Motivational Message for You!', description = '{}'.format(motivation2))
-    embed.set_image(url="https://cdn.discordapp.com/attachments/385416830229151746/462809050053345322/images.jpg")
-    await client.say(embed=embed)
     
 @client.command(pass_context=True)
 @commands.cooldown(1, 5, commands.BucketType.user)
