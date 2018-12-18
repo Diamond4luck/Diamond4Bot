@@ -255,7 +255,8 @@ async def game(ctx):
     else:
         await client.say('%s you like to play %s' % (ctx.message.author.mention, games)
 
-@client.command(pass_context=True)                    
+@client.command(pass_context=True) 
+@commands.cooldown(1, 5, commands.BucketType.user)                         
 async def moti(ctx):
     motivation = open('moti2.txt', encoding = "UTF-8").read().splitlines()
     motivation2 = random.choice(motivation)
