@@ -244,16 +244,6 @@ async def diary(ctx):
     embed.add_field(name="Written in",value="{}/{}/2018.".format(Day, Month))
     embed.set_image(url="https://cdn.discordapp.com/attachments/347731992227610625/480550401968701440/diary.jpg")
     await client.say(embed=embed)
-
-@client.command(pass_context=True)
-@commands.cooldown(1, 5, commands.BucketType.user)
-async def game(ctx):
-    game = open('Games.txt').read().splitlines()
-    games = random.choice(game)
-    if ctx.message.author.id == "206027308149112832":
-        await client.say("<@!206027308149112832> you like to play Clash Royale!")
-    else:
-        await client.say('%s you like to play %s' % (ctx.message.author.mention, games)
     
 @client.command(pass_context=True)
 @commands.cooldown(1, 5, commands.BucketType.user)
