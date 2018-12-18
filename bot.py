@@ -91,6 +91,53 @@ async def casino(ctx):
             await client.say("It was smaller than 50. You won!")
         else:
             await client.say("It was smaller than 50. You lost.")
+            
+@client.command(pass_context=True)
+async def help(ctx):
+    embed = discord.Embed(title="Everything you need here!")
+    embed.add_field(name="!!power", value="Do !!power to see what hidden powers you have!")
+    embed.add_field(name="!!logs", value="Do !!logs to see what recent changes I did to the bot!")
+    embed.add_field(name="!!help", value="Do !!help to get help about the bot!")
+    embed.add_field(name="!!casino", value="Do !!casino and see if you can win or not!")
+    embed.add_field(name="!!rps", value="Do !!rps and play Rock, Paper, Scissors! with the bot itself!")
+    embed.add_field(name="!!yon", value="Do !!yon and see if you want what the bot says!")
+    embed.add_field(name="!!yon add", value="Do !!yon add and add your own lines of  Yes or No!")
+    embed.add_field(name="!!wyr", value="Do !!wyr and play Would you Rather with the bot!")
+    embed.add_field(name="!!wyr add", value="Do !!wyr add and add your own lines of Would You Rather!")
+    embed.add_field(name="!!kill", value="Do !!kill and see how you kill someone!")
+    embed.add_field(name="!!diary", value="Do !!diary and see other people's diaries!")
+    embed.set_footer(text="Page 1 of 2")
+
+    help1 = await client.say(embed=embed)
+    await client.say("Type help2 to see the pages.")
+
+    helpembed2 = discord.Embed(title="Second page!")
+    helpembed2.add_field(name="!!game", value="Do !!game and the bot guesses your favourite game", inline=False)
+    helpembed2.add_field(name="!!moti", value="Do !!diary and see a motivational message!", inline=False)
+    helpembed2.add_field(name="!!love", value="Do !!love and see who loves who for how long!", inline=False)
+    helpembed2.add_field(name="!!reco", value="Do !!reco and see what the bot recommends a command for you!", inline=False)
+    helpembed2.add_field(name="!!ping", value="Do !!diary to ping the bot!", inline=False)
+    helpembed2.add_field(name="!!flip", value="Do !!flip and the bot flips a coin for you!", inline=False)
+    helpembed2.add_field(name="!!amIgay", value="Do !!amIgay and the bot guesses if you are gay or not.", inline=False)
+    helpembed2.add_field(name="!!howIkms", value="Do !!howIkms and see how would you kill yourself! (joke)", inline=False)
+    helpembed2.add_field(name="!!chance", value="Do !!chance and see if you're lucky or not! (similar to 8ball)", inline=False)
+    helpembed2.add_field(name="!!future", value="Do !!future and see your possible future!", inline=False)
+    helpembed2.add_field(name="!!number", value="Do !!number and see your lucky number!", inline=False)
+    helpembed2.add_field(name="!!badnumber", value="Do !!badnumber and see your unlucky number!", inline=False)
+    helpembed2.set_footer(text="Page 2 of 2")
+    #inline is where it doesn't set the first letter in the first word captialised (I think)
+    
+    def check(m):
+        return m.author == ctx.message.author and m.content == 'help2' #from the author who typed the command and detects the next message if there is help2
+    
+    
+    try:
+        msg = (await client.wait_for_message(check=check, timeout=120)).content #waits for u to type something.
+    except asyncio.TimeoutError:
+        return await client.delete_message(help1)
+
+    if msg == 'help2': #if the message is help2 (by you)
+        await client.edit_message(help1, embed=helpembed2)      #edits the message of the first embed            
 
 @client.command(pass_context=True)
 async def rps(ctx):
