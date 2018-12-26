@@ -56,7 +56,7 @@ async def logs(ctx):
     await client.say(embed=embed)   
     
 @client.command(pass_context=True)
-async def casino(ctx, error):
+async def casino(ctx):
     casinostart = await client.say("Bigger or smaller than 50? Say it!")
 
     def check(m):
@@ -68,7 +68,6 @@ async def casino(ctx, error):
     elif 'Smaller' in message.content:
         await client.say("Smaller? OK! Rolling!")
     else:
-        await client.say("You typed something wrong.")
         raise error
         
     casinonumber = random.randint(0,100)
