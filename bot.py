@@ -205,8 +205,8 @@ async def add(ctx,*, string):
     await client.say("Added!")
 
 @client.command()
-    async def source(self, ctx, *, command: str = None):
-        """Displays my full source code or for a specific command.
+async def source(self, ctx, *, command: str = None):
+    """Displays my full source code or for a specific command.
         To display the source code of a subcommand you can separate it by
         periods, e.g. tag.create for the create subcommand of the tag command
         or by spaces.
@@ -231,7 +231,7 @@ async def add(ctx,*, string):
             source_url = 'https://github.com/Diamond4luck/Diamond4Bot/edit/master/bot.py'
 
         final_url = f'<{source_url}/blob/rewrite/{location}#L{firstlineno}-L{firstlineno + len(lines) - 1}>'
-        await client.say(final_url)    
+        await client.say(final_url) 
 
 @client.group(pass_context=True, invoke_without_command=True)
 async def wyr(ctx):
