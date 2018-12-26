@@ -204,31 +204,6 @@ async def add(ctx,*, string):
     yonopen.close()
     await client.say("Added!")
 
-@client.command()
-async def source(self, ctx, *, command: str = None):
-    source_url = 'https://github.com/Diamond4luck/Diamond4Bot'
-    if command is None:
-        return await client.say(source_url)
-
-    obj = self.bot.get_command(command.replace('.', ' '))
-    if obj is None:
-        return await client.say('Could not find command.')
-
-    src = obj.callback.__code__
-    lines, firstlineno = inspect.getsourcelines(src)
-    if not obj.callback.__module__.startswith('discord'):
-            # not a built-in command
-        location = os.path.relpath(src.co_filename).replace('\\', '/')
-    else:
-        location = obj.callback.__module__.replace('.', '/') + '.py'
-        source_url = 'https://github.com/Diamond4luck/Diamond4Bot/edit/master/bot.py'
-
-    final_url = f'<{source_url}/blob/rewrite/{location}#L{firstlineno}-L{firstlineno + len(lines) - 1}>'
-    await client.say(final_url) 
-    
-        
-  
-
 @client.group(pass_context=True, invoke_without_command=True)
 async def wyr(ctx):
     wyrlist = open('wyr.txt').read().splitlines()
