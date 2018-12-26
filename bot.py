@@ -56,7 +56,7 @@ async def logs(ctx):
     await client.say(embed=embed)   
     
 @client.command(pass_context=True)
-async def casino(ctx):
+async def casino(ctx, error):
     casinostart = await client.say("Bigger or smaller than 50? Say it!")
 
     def check(m):
