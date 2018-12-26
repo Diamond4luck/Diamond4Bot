@@ -67,8 +67,6 @@ async def casino(ctx):
         await client.say("Bigger? OK! Rolling!")
     elif 'Smaller' in message.content:
         await client.say("Smaller? OK! Rolling!")
-    else:
-        raise error
         
     casinonumber = random.randint(0,100)
     sentcasinon = await client.say("{0}".format(casinonumber))
