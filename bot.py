@@ -94,7 +94,42 @@ async def casino(ctx):
         else:
             await client.say("It was smaller than 50. You lost.")
         
-      
+@client.command(pass_context=True)
+async def casino2(ctx):
+    casinostart = await client.say("Bigger or smaller than 50? Say it!")
+
+    def check(m):
+        if m.author == ctx.message.author:
+            return True
+        if m.content in ['Bigger', 'Smaller']:
+            return True
+        return False
+
+    try:
+        message = await client.wait_for_message(check=check, timeout=60)
+    except asyncio.TimeoutError:
+        await client.say("Guess you don't want to play.")
+    else:
+        if message.content.capitalize() == 'Bigger':
+            await client.edit_message(casinostart, "Bigger? OK! Rolling!")
+        else:
+            await client.edit_message(casinostart, "Smaller? OK! Rolling!")
+
+    for x in range(5):
+        random = random.randint(0, 100)
+        await client.edit_message(casinostart, random)
+        await asyncio.sleep(5)
+
+    if int(casinostart.content) >= 50:
+        if message.content.capitalize() == 'Bigger':
+            await client.edit_message(casinostart, "It was bigger than 50, you won!")
+        else:
+            await client.edit_message(casinostart, "It was bigger than 50, you lost!")
+    else:
+        if message.content.capitalize() == 'Bigger':
+            await client.edit_message(casinostart, "It was bigger than 50, you won!")
+        else:
+            await client.edit_message(casinostart, "It was bigger than 50, you lost!")     
             
 @client.command(pass_context=True)
 async def help(ctx):
