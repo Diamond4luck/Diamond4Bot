@@ -57,7 +57,7 @@ async def logs(ctx):
     
 @client.command(pass_context=True)
 async def casino(ctx):
-    casinostart = await client.say("Bigger or smaller than 50? Say it!")
+    casinostart = await client.say("Bigger or smaller than 50? Say it, and you'll be awarded with a reward!")
 
     def check(m):
         return 'Bigger', 'Smaller'
@@ -76,21 +76,25 @@ async def casino(ctx):
     sentcasinon3 = await client.edit_message(sentcasinon2,"{0}".format(casinonumber3))
     casinonumber4 = random.randint(0,100)
     sentcasinon4 = await client.edit_message(sentcasinon3,"{0}".format(casinonumber4))
-    casinonumber5 = random.randint(0,100)    
+    casinonumber5 = random.randint(0,100)
+    rewardslist = open('Rwards.txt').read().splitlines()
+    rewards = random.choice(rewardslist)
     if casinonumber5 >= 50:
         await client.edit_message(sentcasinon4,"The number is {0}, which is bigger than 50!".format(casinonumber5))
     else:
         await client.edit_message(sentcasinon4,"The number is {0}, which is smaller than 50!".format(casinonumber5))
     if casinonumber5 >= 50:
         if 'Bigger' in message.content:
-            await client.say("It was bigger than 50. You won!")
+            await client.say("It was bigger than 50. You won! Your reward is {}! ".format(rewards))
         else:
             await client.say("It was bigger than 50. You lost.")
     elif casinonumber5 <= 50:
         if 'Smaller' in message.content:
-            await client.say("It was smaller than 50. You won!")
+            await client.say("It was smaller than 50. You won! Your reward is {}!".format(rewards))
         else:
             await client.say("It was smaller than 50. You lost.")
+        
+      
             
 @client.command(pass_context=True)
 async def help(ctx):
