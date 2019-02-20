@@ -116,7 +116,7 @@ async def casino2(ctx):
             await client.edit_message(casinostart, "Smaller? OK! Rolling!")
 
     for x in range(5):
-        random = random.randint(0, 100)
+        random_ = random.randint(0, 100)
         await client.edit_message(casinostart, random)
         await asyncio.sleep(5)
 
