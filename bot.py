@@ -30,7 +30,7 @@ async def power(ctx):
     power = open('power.txt').read().splitlines()
     power2 = random.choice(power)
     if ctx.message.author.id == "206027308149112832":
-        await client.say("<@!206027308149112832> You can fly!!")
+        await client.say("<@!206027308149112832> You can fly!!!")
     else:
         await client.say('%s Your hidden power is: %s' % (ctx.message.author.mention, power2))       
     
