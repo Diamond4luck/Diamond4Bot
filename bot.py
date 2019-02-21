@@ -117,7 +117,7 @@ async def casino2(ctx):
 
     for x in range(5):
         random_ = random.randint(0, 100)
-        await client.edit_message(casinostart, random)
+        await client.edit_message(casinostart, random_)
         await asyncio.sleep(5)
 
     if int(casinostart.content) >= 50:
