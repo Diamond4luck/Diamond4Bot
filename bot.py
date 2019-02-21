@@ -121,12 +121,12 @@ async def casino2(ctx):
         await asyncio.sleep(5)
 
     if int(casinostart.content) >= 50:
-        if message.content.capitalize() == 'Bigger':
+        if 'Bigger' in message.content:
             await client.edit_message(casinostart, "It was bigger than 50, you won!")
         else:
             await client.edit_message(casinostart, "It was bigger than 50, you lost!")
     else:
-        if message.content.capitalize() == 'Smaller':
+        if 'Smaller' in message.content:
             await client.edit_message(casinostart, "It was bigger than 50, you won!")
         else:
             await client.edit_message(casinostart, "It was bigger than 50, you lost!")     
