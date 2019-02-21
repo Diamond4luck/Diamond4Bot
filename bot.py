@@ -126,7 +126,7 @@ async def casino2(ctx):
         else:
             await client.edit_message(casinostart, "It was bigger than 50, you lost!")
     else:
-        if message.content.capitalize() == 'Bigger':
+        if message.content.capitalize() == 'Smaller':
             await client.edit_message(casinostart, "It was bigger than 50, you won!")
         else:
             await client.edit_message(casinostart, "It was bigger than 50, you lost!")     
