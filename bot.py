@@ -77,20 +77,20 @@ async def casino(ctx):
     casinonumber4 = random.randint(0,100)
     sentcasinon4 = await client.edit_message(sentcasinon3,"{0}".format(casinonumber4))
     casinonumber5 = random.randint(0,100)
-    rewardslist = open('Rewards.txt').read().splitlines()
-    rewards = random.choice(rewardslist)
+    casinorewardslist = open('Rewards.txt').read().splitlines()
+    casinorewards = random.choice(casinorewardslist)
     if casinonumber5 >= 50:
         await client.edit_message(sentcasinon4,"The number is {0}, which is bigger than 50!".format(casinonumber5))
     else:
         await client.edit_message(sentcasinon4,"The number is {0}, which is smaller than 50!".format(casinonumber5))
     if casinonumber5 >= 50:
         if 'Bigger' in message.content:
-            await client.say("It was bigger than 50. You won! Your reward is {}! ".format(rewards))
+            await client.say("It was bigger than 50. You won! Your reward is {}! ".format(casinorewards))
         else:
             await client.say("It was bigger than 50. You lost.")
     elif casinonumber5 <= 50:
         if 'Smaller' in message.content:
-            await client.say("It was smaller than 50. You won! Your reward is {}!".format(rewards))
+            await client.say("It was smaller than 50. You won! Your reward is {}!".format(casinorewards))
         else:
             await client.say("It was smaller than 50. You lost.")
         
@@ -194,7 +194,9 @@ async def rps(ctx):
         await client.say("You chose scissors!")
     else:
         await client.say("Umm, did you do something wrong?")
-        
+     
+    rpsrewardslist = open('Rewards.txt').read().splitlines()
+    rpsrewards = random.choice(rpsrewardslist)
     rps1 = random.choice(["Rock","Paper","Scissors"])
     rpsdecision = await client.say(rps1)
     rps2 = random.choice(["Rock","Paper","Scissors"])
@@ -208,25 +210,25 @@ async def rps(ctx):
 
     if 'Rock' in rps5:
         if 'Rock' in message.content:
-            await client.say("Rock versus Rock, it's a **tie!**")
+            await client.say("Rock versus Rock, it's a **tie!** You win nothing!")
         elif 'Paper' in message.content:
-            await client.say("Paper versus Rock, Rock **wins!** You won!")
+            await client.say("Paper versus Rock, Rock **wins!** You won! Your prize is {}.".format(rpsrewards))
         elif 'Scissors' in message.content:
             await client.say("Scissors versus Rock, Rock **wins!** You lost!")
     elif 'Paper' in rps5:
         if 'Rock' in message.content:
             await client.say("Rock versus Paper, Paper **wins!** You lost!")
         elif 'Paper' in message.content:
-            await client.say("Paper versus Paper, it's a **tie!**")
+            await client.say("Paper versus Paper, it's a **tie!** You win nothing!")
         elif 'Scissors' in message.content:
-            await client.say("Scissors versus Paper, Scissors **wins!** You won!")
+            await client.say("Scissors versus Paper, Scissors **wins!** You won! Your prize is {}.".format(rpsrewards))
     elif 'Scissors' in rps5:
         if 'Rock' in message.content:
-            await client.say("Rock versus Scissors, Rock **wins!** You won!")
+            await client.say("Rock versus Scissors, Rock **wins!** You won! Your prize is {}.".format(rpsrewards))
         elif 'Paper' in message.content:
             await client.say("Paper versus Scissors, Paper **wins!** You lost!")
         elif 'Scissors' in message.content:
-            await client.say("Scissors versus Scissors, it's a **tie!**") 
+            await client.say("Scissors versus Scissors, it's a **tie!** You win nothing!") 
            
 @client.group(pass_context=True, invoke_without_command=True)
 async def yon(ctx):
