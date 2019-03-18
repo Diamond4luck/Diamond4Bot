@@ -243,7 +243,7 @@ async def badminton(ctx):
     if 'High' in message.content:
         await client.say("You served a high ball!")
     elif 'Low' in message.content:
-        await client.say("You served a low ball!"))
+        await client.say("You served a low ball!")
     else:
         await client.say("You randomly served the ball, and the referee gives you a foul! Match ended!")
         
