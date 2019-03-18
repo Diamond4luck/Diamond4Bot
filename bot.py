@@ -247,7 +247,7 @@ async def badminton(ctx):
     else:
         await client.say("You randomly served the ball, and the referee gives you a foul! Match ended!")
         
-    playerserve = random.choice(["The player sucessfully hit the ball!","The player missed the ball!")
+    playerserve = random.choice(["The player sucessfully hit the ball!","The player missed the ball!"])
     playerstatus = await client.say(playerserve)
     playerhit = random.choice(["The player hits a high ball!","The player hits a low ball!"])
     
