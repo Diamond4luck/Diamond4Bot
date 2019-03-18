@@ -235,7 +235,26 @@ async def badminton(ctx):
     badmintonplayers = random.choice([x for x in ctx.message.server.members if not x.bot])
     await client.say("You are now competing with {}.".format(badmintonplayers))
     await client.say("It's your turn to serve. Serve high or low?")
-                  
+    
+    def check(m):
+      return 'High','Low'
+    
+    message = await client.wait_for_message()
+    if 'High' in message.content:
+        await client.say("You served a high ball!")
+    elif 'Low' in message.content:
+        await client.say("You served a low ball!"))
+    else:
+        await client.say("You randomly served the ball, and the referee gives you a foul! Match ended!")
+        
+    playerserve = random.choice(["The player sucessfully hit the ball!","The player missed the ball!")
+    playerstatus = await client.say(playerserve)
+    playerhit = random.choice(["The player hits a high ball!","The player hits a low ball!"])
+    
+    if 'The player sucessfully hit the ball!' in playerserve:                                 
+        await client.say("{} Where should you be? Behind or Front?".format(playerhit))
+    elif 'The player missed the ball!' in playerserve:
+        await client.say("Congratulations! You won!")
                       
 @client.group(pass_context=True, invoke_without_command=True)
 async def yon(ctx):
