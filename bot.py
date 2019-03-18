@@ -229,7 +229,14 @@ async def rps(ctx):
             await client.say("Paper versus Scissors, Paper **wins!** You lost!")
         elif 'Scissors' in message.content:
             await client.say("Scissors versus Scissors, it's a **tie!** You win nothing!") 
-           
+
+@client.command(pass_context=True)
+async def badminton(ctx):
+    badmintonplayers = random.choice([x for x in ctx.message.server.members if not x.bot])
+    await client.say("You are now competing with {}.".format(badmintonplayers))
+    await client.say("It's your turn to serve. Serve high or low?")
+                  
+                      
 @client.group(pass_context=True, invoke_without_command=True)
 async def yon(ctx):
     yesornolist = open('yesorno.txt').read().splitlines()
