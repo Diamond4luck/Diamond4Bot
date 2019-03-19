@@ -192,8 +192,9 @@ async def rps(ctx):
         await client.say("You chose paper!")
     elif 'Scissors' in message.content:
         await client.say("You chose scissors!")
-    else:
-        await client.say("Umm, did you do something wrong?")    
+    return 
+        await client.say("Umm, did you do something wrong?")
+          
      
     rpsrewardslist = open('Rewards.txt').read().splitlines()
     rpsrewards = random.choice(rpsrewardslist)
@@ -255,6 +256,35 @@ async def badminton(ctx):
         await client.say("{} Where should you be? Behind or Front?".format(playerhit))
     elif 'The player missed the ball!' in playerserve:
         await client.say("Congratulations! You won!")
+        
+   def check(m):
+      return 'Behind','Front'
+    
+    message = await client.wait_for_message()
+    if 'Behind' in message.content:
+        await client.say("You went backwards!")
+    elif 'Front' in message.content:
+        await client.say("You went forward!")
+    else:
+        await client.say("You rushed off and people thought you raged quit! Match ended!")
+        
+    shuttercock = random.choice(["The ball lands an in! You lost!","However, the ball lands an out! You won!"])
+    
+    if 'The player hits a low ball!' in playerhit:
+        if 'Front' in message.content:
+            await client.say("You feel like you can hit the ball! High or low?")
+        elif 'Behind' in message.content:
+            await client.say("Oh no! You are unable to hit the ball!")
+            await client.say("It's an in! You lost!")
+     elif 'The player hits a high ball!' in playerhit:
+        if 'Behind' in message.content:
+            await client.say("You feel like you can hit the ball! High or low?")
+        elif 'Front' in message.content:
+            await client.say("Oh no! You are unable to hit the ball!")
+            await client.say(shuttercock)
+               
+            
+            
                       
 @client.group(pass_context=True, invoke_without_command=True)
 async def yon(ctx):
