@@ -192,8 +192,7 @@ async def rps(ctx):
         await client.say("You chose paper!")
     elif 'Scissors' in message.content:
         await client.say("You chose scissors!")
-    return 
-        await client.say("Umm, did you do something wrong?")
+    return await client.say("Umm, did you do something wrong?")
           
      
     rpsrewardslist = open('Rewards.txt').read().splitlines()
