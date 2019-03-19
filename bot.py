@@ -194,7 +194,7 @@ async def rps(ctx):
         await client.say("You chose scissors!")
     else:
         await client.say("Umm, did you do something wrong?")
-    return end
+    return False
      
     rpsrewardslist = open('Rewards.txt').read().splitlines()
     rpsrewards = random.choice(rpsrewardslist)
