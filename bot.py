@@ -191,8 +191,7 @@ async def rps(ctx):
     elif 'Paper' in message.content:
         await client.say("You chose paper!")
     elif 'Scissors' in message.content:
-        await client.say("You chose scissors!")
-    return await client.say("Umm, did you do something wrong?")
+        await client.say("You chose scissors!"))
           
      
     rpsrewardslist = open('Rewards.txt').read().splitlines()
@@ -256,7 +255,7 @@ async def badminton(ctx):
     elif 'The player missed the ball!' in playerserve:
         await client.say("Congratulations! You won!")
         
-   def check(m2):
+   def check(m):
       return 'Behind','Front'
     
     message2 = await client.wait_for_message()
