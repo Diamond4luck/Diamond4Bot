@@ -259,7 +259,7 @@ async def badminton(ctx):
    def check(m):
       return 'Behind','Front'
     
-    message = await client.wait_for_message()
+    message2 = await client.wait_for_message()
     if 'Behind' in message.content:
         await client.say("You went backwards!")
     elif 'Front' in message.content:
