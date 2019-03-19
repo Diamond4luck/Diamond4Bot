@@ -191,7 +191,7 @@ async def rps(ctx):
     elif 'Paper' in message.content:
         await client.say("You chose paper!")
     elif 'Scissors' in message.content:
-        await client.say("You chose scissors!"))
+        await client.say("You chose scissors!")
           
      
     rpsrewardslist = open('Rewards.txt').read().splitlines()
