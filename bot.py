@@ -271,7 +271,7 @@ async def badminton(ctx):
         elif 'Behind' in message.content:
             await client.say("Oh no! You are unable to hit the ball!")
             await client.say("It's an in! You lost!")
-     else 'The player hits a high ball!' in playerhit
+    elif 'The player hits a high ball!' in playerhit:
         if 'Behind' in message.content:
             await client.say("You feel like you can hit the ball! High or low?")
         elif 'Front' in message.content:
