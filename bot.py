@@ -239,6 +239,7 @@ async def badminton(ctx):
       return 'high','low'
     
     message = await client.wait_for_message()
+    while message:
     if 'high' in message.content:
         await client.say("You served a high ball!")
     elif 'low' in message.content:
