@@ -5,6 +5,7 @@ import os
 from discord.ext.commands import Bot
 from discord.ext import commands
 import random
+import sys
 
 
 Client = discord.Client()
@@ -254,6 +255,7 @@ async def badminton(ctx):
         await client.say("{} Where should you be? Behind or Front?".format(playerhit))
     elif 'The player missed the ball!' in playerserve:
         await client.say("Congratulations! You won!")
+        sys.exit
     
     def check(m):
       return 'behind','front'
