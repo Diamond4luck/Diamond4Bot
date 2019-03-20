@@ -259,9 +259,9 @@ async def badminton(ctx):
       return 'Behind','Front'
     
     message2 = await client.wait_for_message()
-    if 'Behind' in message.content:
+    if 'Behind' in message2.content:
         await client.say("You went backwards!")
-    elif 'Front' in message.content:
+    elif 'Front' in message2.content:
         await client.say("You went forward!")
     else:
         await client.say("You rushed off and people thought you raged quit! Match ended!")
@@ -269,15 +269,15 @@ async def badminton(ctx):
     shuttercock = random.choice(["The ball lands an in! You lost!","However, the ball lands an out! You won!"])                                
     
     if 'The player hits a low ball!' in playerhit:
-        if 'Front' in message.content:
+        if 'Front' in message2.content:
             await client.say("You feel like you can hit the ball! High or low?")
-        elif 'Behind' in message.content:
+        elif 'Behind' in message2.content:
             await client.say("Oh no! You are unable to hit the ball!")
             await client.say("It's an in! You lost!")
     elif 'The player hits a high ball!' in playerhit:
-        if 'Behind' in message.content:
+        if 'Behind' in message2.content:
             await client.say("You feel like you can hit the ball! High or low?")
-        elif 'Front' in message.content:
+        elif 'Front' in message2.content:
             await client.say("Oh no! You are unable to hit the ball!")
             await client.say(shuttercock)
                
