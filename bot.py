@@ -263,7 +263,7 @@ async def badminton(ctx):
     else:
         await client.say("You rushed off and people thought you raged quit! Match ended!")
         
-    shuttercock = random.choice(["The ball lands an in! You lost!","However, the ball lands an out! You won!"])
+    shuttercock = random.choice(["The ball lands an in! You lost!","However, the ball lands an out! You won!"])                                
     
     if 'The player hits a low ball!' in playerhit:
         if 'Front' in message.content:
