@@ -387,7 +387,7 @@ async def badminton(ctx):
         elif 'front' in message2.content:
             await client.say("Oh no! You are unable to hit the ball!")
             await client.say(shuttercock)
-            return    
+            return   
                
 #loop code needed, will work on it soon           
             
