@@ -282,10 +282,10 @@ async def badminton(ctx):
         elif 'front' in message2.content:
             await client.say("Oh no! You are unable to hit the ball!")
             await client.say(shuttercock)
-                if 'The ball lands an in! You lost!' in shuttercock:
-                    return
-                elif 'However, the ball lands an out! You won!' in shuttercock:
-                    return
+                 if 'The ball lands an in! You lost!' in shuttercock:
+                     return
+                 elif 'However, the ball lands an out! You won!' in shuttercock:
+                     return
             
     def check(m):
       return 'high','low'
