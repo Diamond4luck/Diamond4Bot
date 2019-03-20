@@ -236,7 +236,7 @@ async def badminton(ctx):
     await client.say("It's your turn to serve. Serve high or low?")
     
     def check(m):
-      return 'High','Low','Behind','Front'
+      return 'High','Low'
     
     message = await client.wait_for_message()
     if 'High' in message.content:
