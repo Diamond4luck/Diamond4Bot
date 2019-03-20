@@ -255,6 +255,9 @@ async def badminton(ctx):
     elif 'The player missed the ball!' in playerserve:
         await client.say("Congratulations! You won!")
     
+    def check(m):
+      return 'Behind','Front'
+    
     message2 = await client.wait_for_message()
     if 'Behind' in message.content:
         await client.say("You went backwards!")
