@@ -337,8 +337,59 @@ async def badminton(ctx):
             await client.say("Oh no! You are unable to hit the ball!")
             await client.say(shuttercock)
             return
+        
+     def check(m):
+      return 'high','low'
+    
+    message = await client.wait_for_message()
+    if 'high' in message.content:
+        await client.say("You served a high ball!")
+    elif 'low' in message.content:
+        await client.say("You served a low ball!")
+    else:
+        await client.say("You randomly served the ball, and the referee gives you a foul! Match ended!")
+        
+    playerserve = random.choice(["The player sucessfully hit the ball!","The player missed the ball!"])
+    playerstatus = await client.say(playerserve)
+    playerhit = random.choice(["The player hits a high ball!","The player hits a low ball!"])
+    
+    if 'The player sucessfully hit the ball!' in playerserve:                                 
+        await client.say("{} Where should you be? Behind or Front?".format(playerhit))
+    elif 'The player missed the ball!' in playerserve:
+        await client.say("Congratulations! You won!")
+        return
+        
+    
+    def check(m):
+      return 'behind','front'
+    
+    message = await client.wait_for_message()
+    if 'behind' in message.content:
+        await client.say("You went backwards!")
+    elif 'front' in message.content:
+        await client.say("You went forward!")
+    else:
+        await client.say("You rushed off and people thought you raged quit! Match ended!")
+        return
+        
+    shuttercock = random.choice(["The ball lands an in! You lost!","However, the ball lands an out! You won!"])                                
+    
+    if 'The player hits a low ball!' in playerhit:
+        if 'front' in message.content:
+            await client.say("You feel like you can hit the ball! High or low?")
+        elif 'behind' in message.content:
+            await client.say("Oh no! You are unable to hit the ball!")
+            await client.say("It's an in! You lost!")
+            return
+    elif 'The player hits a high ball!' in playerhit:
+        if 'behind' in message.content:
+            await client.say("You feel like you can hit the ball! High or low?")
+        elif 'front' in message2.content:
+            await client.say("Oh no! You are unable to hit the ball!")
+            await client.say(shuttercock)
+            return    
                
-            
+#loop code needed, will work on it soon           
             
                       
 @client.group(pass_context=True, invoke_without_command=True)
