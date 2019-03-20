@@ -267,6 +267,7 @@ async def badminton(ctx):
         await client.say("You went forward!")
     else:
         await client.say("You rushed off and people thought you raged quit! Match ended!")
+        return
         
     shuttercock = random.choice(["The ball lands an in! You lost!","However, the ball lands an out! You won!"])                                
     
@@ -276,6 +277,7 @@ async def badminton(ctx):
         elif 'behind' in message.content:
             await client.say("Oh no! You are unable to hit the ball!")
             await client.say("It's an in! You lost!")
+            return
     elif 'The player hits a high ball!' in playerhit:
         if 'behind' in message.content:
             await client.say("You feel like you can hit the ball! High or low?")
@@ -295,6 +297,7 @@ async def badminton(ctx):
         await client.say("You served a low ball!")
     else:
         await client.say("You randomly served the ball, and the referee gives you a foul! Match ended!")
+        return
         
     playerserve = random.choice(["The player sucessfully hit the ball!","The player missed the ball!"])
     playerstatus = await client.say(playerserve)
@@ -316,6 +319,7 @@ async def badminton(ctx):
         await client.say("You went forward!")
     else:
         await client.say("You rushed off and people thought you raged quit! Match ended!")
+        return
         
     shuttercock = random.choice(["The ball lands an in! You lost!","However, the ball lands an out! You won!"])                                
     
@@ -325,12 +329,14 @@ async def badminton(ctx):
         elif 'behind' in message.content:
             await client.say("Oh no! You are unable to hit the ball!")
             await client.say("It's an in! You lost!")
+            return
     elif 'The player hits a high ball!' in playerhit:
         if 'behind' in message.content:
             await client.say("You feel like you can hit the ball! High or low?")
-        elif 'front' in message2.content:
+        elif 'front' in message.content:
             await client.say("Oh no! You are unable to hit the ball!")
             await client.say(shuttercock)
+            return
                
             
             
