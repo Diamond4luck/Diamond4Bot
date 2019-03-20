@@ -236,12 +236,12 @@ async def badminton(ctx):
     await client.say("It's your turn to serve. Serve high or low?")
     
     def check(m):
-      return 'High','Low'
+      return 'high','low'
     
     message = await client.wait_for_message()
-    if 'High' in message.content:
+    if 'high' in message.content:
         await client.say("You served a high ball!")
-    elif 'Low' in message.content:
+    elif 'low' in message.content:
         await client.say("You served a low ball!")
     else:
         await client.say("You randomly served the ball, and the referee gives you a foul! Match ended!")
@@ -255,13 +255,13 @@ async def badminton(ctx):
     elif 'The player missed the ball!' in playerserve:
         await client.say("Congratulations! You won!")
     
-    def check(m2):
-      return 'Behind','Front'
+    def check(m):
+      return 'behind','front'
     
-    message2 = await client.wait_for_message()
-    if 'Behind' in message2.content:
+    message = await client.wait_for_message()
+    if 'behind' in message.content:
         await client.say("You went backwards!")
-    elif 'Front' in message2.content:
+    elif 'front' in message.content:
         await client.say("You went forward!")
     else:
         await client.say("You rushed off and people thought you raged quit! Match ended!")
@@ -269,15 +269,15 @@ async def badminton(ctx):
     shuttercock = random.choice(["The ball lands an in! You lost!","However, the ball lands an out! You won!"])                                
     
     if 'The player hits a low ball!' in playerhit:
-        if 'Front' in message2.content:
+        if 'front' in message.content:
             await client.say("You feel like you can hit the ball! High or low?")
-        elif 'Behind' in message2.content:
+        elif 'behind' in message.content:
             await client.say("Oh no! You are unable to hit the ball!")
             await client.say("It's an in! You lost!")
     elif 'The player hits a high ball!' in playerhit:
-        if 'Behind' in message2.content:
+        if 'behind' in message.content:
             await client.say("You feel like you can hit the ball! High or low?")
-        elif 'Front' in message2.content:
+        elif 'front' in message2.content:
             await client.say("Oh no! You are unable to hit the ball!")
             await client.say(shuttercock)
                
