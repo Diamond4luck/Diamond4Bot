@@ -234,12 +234,12 @@ async def badminton(ctx):
     badmintonplayers = random.choice([x for x in ctx.message.server.members if not x.bot])
     await client.say("You are now competing with {}.".format(badmintonplayers))
     await client.say("It's your turn to serve. Serve high or low?")
+    active = True
+    while True:
     
     def check(m):
       return 'high','low'
-    
-    active = True
-    while True:
+   
     message = await client.wait_for_message()
     if 'high' in message.content:
         await client.say("You served a high ball!")
