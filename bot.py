@@ -185,6 +185,7 @@ async def rps(ctx):
     def check(m):
         return 'Rock','Paper','Scissor'
     
+    while True:
     message = await client.wait_for_message()
     if 'Rock' in message.content:
         await client.say("You chose rock!")
