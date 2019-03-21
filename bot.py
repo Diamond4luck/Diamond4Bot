@@ -185,7 +185,6 @@ async def rps(ctx):
     def check(m):
         return 'Rock','Paper','Scissor'
     
-    while True:
     message = await client.wait_for_message()
     if 'Rock' in message.content:
         await client.say("You chose rock!")
@@ -239,6 +238,8 @@ async def badminton(ctx):
     def check(m):
       return 'high','low'
     
+    active = True
+    while True:
     message = await client.wait_for_message()
     if 'high' in message.content:
         await client.say("You served a high ball!")
@@ -246,6 +247,7 @@ async def badminton(ctx):
         await client.say("You served a low ball!")
     else:
         await client.say("You randomly served the ball, and the referee gives you a foul! Match ended!")
+        active = False
         return
         
     playerserve = random.choice(["The player sucessfully hit the ball!","The player missed the ball!"])
