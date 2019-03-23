@@ -151,6 +151,7 @@ async def help(ctx):
     await client.say("Type help2 to see the pages.")
 
     helpembed2 = discord.Embed(title="Second page!")
+    helpembed2.add_field(name="!!badminton", value="Do !!badminton to play with other members!", inline=False)
     helpembed2.add_field(name="!!game", value="Do !!game and the bot guesses your favourite game", inline=False)
     helpembed2.add_field(name="!!moti", value="Do !!diary and see a motivational message!", inline=False)
     helpembed2.add_field(name="!!love", value="Do !!love and see who loves who for how long!", inline=False)
@@ -256,8 +257,7 @@ async def badminton(ctx):
     elif 'The player missed the ball!' in playerserve:
         await client.say("Congratulations! You won!")
         return
-        
-    
+            
     def check(m):
       return 'behind','front'
     
@@ -285,8 +285,7 @@ async def badminton(ctx):
         elif 'front' in message2.content:
             await client.say("Oh no! You are unable to hit the ball!")
             await client.say(shuttercock)
-            return
-                  
+            return                 
             
     def check(m):
       return 'high','low'
