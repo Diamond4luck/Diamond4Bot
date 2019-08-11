@@ -445,6 +445,11 @@ async def howIkms(ctx):
     kms = random.choice (["Jumping off from Trump's wall","Eating too much KFC","Assassinated by Kim Jong Un","Be surrounded by gay people","Killed by a goddamn clown","Having Ebola, Cancer and Depression at the same time","Be surrounded by creepers","Meeting Herobrine for the first time","Attempting to kill hackers","Being as old as 9999 years old","People calling you cringy/idiot"])
     await client.say(kms)
 
+    
+@client.command(pass_context=True)
+async def status(ctx):
+    await client.say("I'm *gasp* alive! Actually no, I'm kinda dead now.")
+    
 @client.command(pass_context=True)
 async def pong(ctx):
     await client.say("Ping!")
