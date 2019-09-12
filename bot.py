@@ -24,7 +24,13 @@ async def on_command_error(error, ctx):
     if isinstance(error, commands.CommandOnCooldown):
         await client.send_message(ctx.message.channel, content='This command is on a %.2fs cooldown! Please try again later...' % error.retry_after)
     raise error
-               
+
+    
+@client.command(pass_context=True)
+async def code(ctx):
+    Stuff = (["Hi", "Hello", "Bonjour"])
+    await client.say(Stuff)
+    
 @client.command(pass_context=True)
 async def power(ctx):
     power = open('power.txt').read().splitlines()
