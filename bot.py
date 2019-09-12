@@ -29,8 +29,11 @@ async def on_command_error(error, ctx):
 @client.command(pass_context=True)
 async def code(ctx):
     Stuff = ("Hi", "Hello", "Bonjour", "Hai")
-    stuff2 = random.choice(Stuff)
-    await client.say(stuff2)
+    if Stuff == random.choice(Stuff)
+        await client.say("Good")
+    else:
+        await client.say("Nope")
+      
     
 @client.command(pass_context=True)
 async def power(ctx):
