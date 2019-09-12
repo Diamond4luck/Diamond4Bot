@@ -28,7 +28,7 @@ async def on_command_error(error, ctx):
     
 @client.command(pass_context=True)
 async def code(ctx):
-    Stuff = (["Hi", "Hello", "Bonjour"])
+    Stuff = (["Hi", "Hello", "Bonjour", "Hai"])
     await client.say(Stuff)
     
 @client.command(pass_context=True)
