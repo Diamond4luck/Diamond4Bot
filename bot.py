@@ -24,15 +24,6 @@ async def on_command_error(error, ctx):
     if isinstance(error, commands.CommandOnCooldown):
         await client.send_message(ctx.message.channel, content='This command is on a %.2fs cooldown! Please try again later...' % error.retry_after)
     raise error
-
-    
-@client.command(pass_context=True)
-async def code(ctx):
-    Stuff = ("Hi", "Hello", "Bonjour", "Hai")
-    if Stuff == random.choice(Stuff):
-        await client.say("Good")
-    else:
-        await client.say("Nope")
       
     
 @client.command(pass_context=True)
