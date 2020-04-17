@@ -555,7 +555,7 @@ async def edit(ctx):
     edit2 = await client.wait_for_reaction(['3\u20e3'], message=edit)
     await client.edit_message(edit, "Edited!")                         
                   
-client.run(token)
+client.run(os.environ['TOKEN'])
 
 
 
