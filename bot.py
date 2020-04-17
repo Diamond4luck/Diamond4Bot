@@ -90,7 +90,7 @@ async def casino(ctx):
     casinorewardslist = open('Rewards.txt').read().splitlines()
     casinorewards = random.choice(casinorewardslist)
     if casinonumber5 >= 50:
-        await client.edit_message(sentcasinon4,"The number is {0}, which is bigger than 50!".format(casinonumber5))
+        await client.edit_message(sentcasinon4,"The number is {0}, which is bigger than 50!!".format(casinonumber5))
     else:
         await client.edit_message(sentcasinon4,"The number is {0}, which is smaller than 50!".format(casinonumber5))
     if casinonumber5 >= 50:
