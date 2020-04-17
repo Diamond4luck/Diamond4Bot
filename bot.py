@@ -29,7 +29,7 @@ async def on_command_error(error, ctx):
 @client.command(pass_context=True)
 async def code(ctx):
     Stuff = ("Hi", "Hello", "Bonjour", "Hai")
-    if Stuff == random.choice(Stuff)
+    if Stuff == random.choice(Stuff):
         await client.say("Good")
     else:
         await client.say("Nope")
